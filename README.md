@@ -441,6 +441,41 @@ ifconfig -a
     Example:
     whois google.com
     ```
+6. **Checkport open or not:** 
+    ```cmd
+    telnet + <IP address or hostname> + <port number>
+
+    Example:
+    telnet www.example.com 1723
+    telnet 10.17. xxx. xxx 5000
+    ```
+7. **Check network package over internet:**
+    ```cmd
+    traceroute + <IP address or hostname>
+    tracepath + <IP address or hostname>
+
+    Example:
+    traceroute www.example.com
+    tracepath www.google.com
+    ```
+8. **Check domain:**
+    ```cmd
+    nslookup google.com
+    dig www.google.com
+
+    Example:
+    traceroute www.example.com
+    tracepath www.google.com
+
+    ```
+9. **Scan port:**
+    ```cmd
+    nmap -v <IP address or hostname> 
+
+    Example:
+    nmap -v 10.10.3.247
+
+    ```    
 
 **[⬆ Back to Top](#table-of-contents)**
 
@@ -528,10 +563,9 @@ du  -ah --max-depth 2 /home/
 du -ah --exclude="*.txt" /home/
 ```
 
-8.  **Help:** This command gives information about `du`
-
+8.  **Check all file in folder and sort:** 
 ```cmd
-du  --help
+du -sh * | sort -h
 ```
 
 **[⬆ Back to Top](#table-of-contents)**
@@ -580,75 +614,19 @@ grep pattern files
 grep -i // Case sensitive
 grep -r // Recursive
 grep -v // Inverted search
+grep -rnw 'file path' -e 'text_search'
 
 Example:
 grep "^hello" test.txt // Hello John
 grep -i "hELLo" text.txt // Hello John
+grep -rnw '/home/ubuntu/.pm2/logs/server-out.log' -e '1234'
 ```
-
-2. **Find files and directories:**
-
-The `find` command is used to find or search files and directories by file name, folder name, creation date, modification date, owner and permissions etc and perform subsequent operations on them.
-
-i. **Search file with name:**
-
+2. **Read file from line x to line y:**
 ```cmd
-find ./directory_name -name file_name
+sed -n '<x>,<y>p' file_path
 
 Example:
-find ./test -name test.txt // ./test/test.txt
-```
-
-ii. **Search file with pattern:**
-
-```cmd
-find ./directory_name -name file_pattern
-
-Example:
-find ./test -name *.txt // ./test/test.txt
-```
-
-iii. **Search file with executable action:**
-
-```cmd
-find ./directory_name -name file_name -exec command
-
-Example:
-find ./test -name test.txt -exec rm -i {} \; // Search file and delete it after confirmation
-```
-
-iv. **Search for empty files or directories:**
-
-The find command is used to search all empty folders and files in the entered directory or sub-directories.
-
-```cmd
-find ./directory_name -empty
-
-Example:
-find ./test -empty
-//./test/test1
-//./test/test2
-//./test/test1.txt
-```
-
-v. **Search for files with permissions:**
-
-The find command is used to find all the files in the mentioned directory or sub-directory with the given permissions
-
-```cmd
-find ./directory_name -perm permission_code
-
-Example:
-find ./test -perm 664
-```
-
-vi. **Search text within multiple files:**
-
-```cmd
-find ./ -type f -name file_pattern -exec grep some_text  {} \;
-
-Example:
-find ./ -type f -name "*.txt" -exec grep 'World'  {} \; // Hello World
+sed -n '10000000,10000020p' /home/ubuntu/.pm2/logs/server-out.log
 ```
 
 3. **Whereis to locate binary or source files for a command:**
