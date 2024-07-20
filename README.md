@@ -476,6 +476,29 @@ ifconfig -a
     nmap -v 10.10.3.247
 
     ```    
+10. **View list process:**
+
+    ```bash
+    ps -ux
+    ```
+
+11. **View PID of port**
+    ```bash
+    lsof -i:3000
+    ```
+
+12. **View Opened port**
+    ```bash
+    ss -tulpn
+
+    lsof -i -P -n | grep LISTEN
+    ```
+
+13. **View Firewall config**
+    ```bash
+    iptables -L -n
+    iptables -S
+    ```
 
 **[⬆ Back to Top](#table-of-contents)**
 
@@ -575,31 +598,25 @@ du -sh * | sort -h
 1.  **Print all information**: `uname` is mainly used to print system information.
 
 ```bash
-$ uname -a
+uname -a
 ```
 
-2.  **Print kernel name**:
+2.  **Print Operating System**:
 
 ```bash
-$ uname -s
+cat /etc/os-release 
 ```
 
-3.  **Print kernel release**:
+3.  **View memory**:
 
 ```bash
-$ uname -r
-```
+cat /proc/meminfo
 
-4.  **Print Architecture**:
+free -h
 
-```bash
-$ uname -m
-```
+top
 
-5.  **Print Operating System**:
-
-```bash
-$ uname -o
+htop
 ```
 
 **[⬆ Back to Top](#table-of-contents)**
